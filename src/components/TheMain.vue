@@ -6,7 +6,12 @@
       </div>
       <div class="wrapper-acquitted">
         <div class="img-block">
-          <img src="../assets/man-picture.png" alt="man-picture" />
+          <img
+            src="../assets/man-picture.png"
+            width="339"
+            height="285"
+            alt="man-picture"
+          />
         </div>
         <div class="content">
           <h5>I am cool frontend developer</h5>
@@ -21,7 +26,7 @@
               service directory page PSD mockup into HTML5/CSS3.</span
             >
           </p>
-          <button class="btn-flat"><a href="#form" class="black-link">Sing up now</a></button>
+          <a href="#form" class="btn-flat black-link">Sing up now</a>
         </div>
       </div>
     </div>
@@ -30,22 +35,29 @@
         <h2 class="title title-users">Our cheerful users</h2>
         <p class="subtitle">Attention! Sorting users by registration date</p>
       </div>
+
+      <!-- display users from API -->
       <div class="wrapper-users">
         <div class="users-item" v-for="user in users.users" :key="user.id">
-          <img :src="user.photo" />
-          <h3 class="user__name">{{ user.name}}</h3>
-          <p class="user__position">{{ user.position}}</p>
-          <span class="user__email">{{ user.email.slice(0, 20)}}...</span>
-          <p class="user__phone">{{ user.phone}}</p>
+          <img :src="user.photo" width="70" height="70" />
+          <h3 class="user__name">{{ user.name }}</h3>
+          <p class="user__position">{{ user.position }}</p>
+          <span class="user__email">{{ user.email.slice(0, 30) }}</span>
+          <p class="user__phone">{{ user.phone }}</p>
         </div>
-        <div class="load-users" v-for="newUser in newUserList.users" :key="newUser.id">
+        <div
+          class="load-users"
+          v-for="newUser in newUserList.users"
+          :key="newUser.id"
+        >
           <img :src="newUser.photo" />
-          <h3 class="user__name">{{ newUser.name}}</h3>
-          <p class="user__position">{{ newUser.position}}</p>
-          <p class="user__email">{{ newUser.email.slice(0, 20)}}...</p>
-          <p class="user__phone">{{ newUser.phone}}</p>
+          <h3 class="user__name">{{ newUser.name }}</h3>
+          <p class="user__position">{{ newUser.position }}</p>
+          <p class="user__email">{{ newUser.email.slice(0, 30) }}</p>
+          <p class="user__phone">{{ newUser.phone }}</p>
         </div>
       </div>
+
       <div class="wrap-btn">
         <button class="btn" v-on:click="getUsers">Show more</button>
       </div>
@@ -68,11 +80,15 @@ export default {
   methods: {
     getUsers (counter) {
       axios
-        .get(`https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${this.counter += 1}&count=5`)
+        .get(
+          `https://frontend-test-assignment-api.abz.agency/api/v1/users?page=${(this.counter += 1)}&count=5`
+        )
         .then((response) => (this.newUserList = response.data))
         .catch((error) => {
           console.log(error)
         })
+
+      // getting new users clicking the button
     }
   },
   mounted () {
@@ -84,12 +100,14 @@ export default {
       .catch((error) => {
         console.log(error)
       })
+    // getting list of users
   }
 }
 </script>
 
 <style lang="scss" scoped>
 $bg: #f9f9f3;
+
 .block-acquitted {
   margin-bottom: 150px;
 }
@@ -140,6 +158,7 @@ $bg: #f9f9f3;
 }
 .block-users {
   background-color: $bg;
+
   .title-users {
     margin-bottom: 15px;
   }
@@ -155,13 +174,14 @@ $bg: #f9f9f3;
     margin-top: 100px;
     margin: 0 auto;
     text-align: center;
+
     img {
       border-radius: 50%;
     }
     .users-item {
       margin-right: 130px;
       h3 {
-        widows: 200px;
+        width: 200px;
       }
       img {
         border-radius: 50%;
@@ -187,10 +207,11 @@ $bg: #f9f9f3;
     }
   }
   .wrap-btn {
-      padding-bottom: 160px;
+    padding-bottom: 160px;
+
     .btn {
-    margin-left: 43%;
-    margin-top: 40px;
+      margin-left: 43%;
+      margin-top: 40px;
     }
   }
   .btn-flat {
@@ -199,6 +220,7 @@ $bg: #f9f9f3;
     margin-top: 40px;
   }
 }
+
 /* Tablets (вертикальная и горизонтальная) ----------- */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   .block-title {
@@ -207,12 +229,14 @@ $bg: #f9f9f3;
       font-size: 40px;
     }
   }
+
   .wrapper-acquitted .img-block {
     img {
       width: 247px;
       height: 207px;
     }
   }
+
   .wrapper-acquitted .content {
     margin-left: 15px;
     width: 447px;
@@ -237,19 +261,19 @@ $bg: #f9f9f3;
       .load-users {
         margin-right: 75px;
         img {
-        border-radius: 50%;
-        margin-bottom: 24px;
-        margin-top: 50px;
-      }
-      .user__name {
-        margin-bottom: 24px;
-      }
-      .user__position {
-        margin-bottom: 15px;
-      }
-      .user__email {
-        margin-bottom: 12px;
-      }
+          border-radius: 50%;
+          margin-bottom: 24px;
+          margin-top: 50px;
+        }
+        .user__name {
+          margin-bottom: 24px;
+        }
+        .user__position {
+          margin-bottom: 15px;
+        }
+        .user__email {
+          margin-bottom: 12px;
+        }
       }
     }
     .wrap-btn {
@@ -262,6 +286,7 @@ $bg: #f9f9f3;
     }
   }
 }
+
 // /* Smartphones (вертикальная и горизонтальная ориентация)
 @media only screen and (min-width: 320px) and (max-width: 480px) {
   .block-acquitted {
@@ -292,33 +317,34 @@ $bg: #f9f9f3;
       }
     }
   }
+
   .block-users {
-  .title-users {
-    margin-bottom: 8px;
-  }
-  .subtitle {
-    margin-bottom: -14px;
-    letter-spacing: -0.5px;
-  }
-  .wrapper-users {
-    max-width: 480px;
-    .users-item img {
-      margin-bottom: 12px;
-    }
-    .users-item .user__position {
-      margin-bottom: 10px;
-    }
-    .users-item .user__email {
+    .title-users {
       margin-bottom: 8px;
     }
-    .users-item .user__name {
-      margin-bottom: 12px;
+    .subtitle {
+      margin-bottom: -14px;
+      letter-spacing: -0.5px;
+    }
+    .wrapper-users {
+      max-width: 480px;
+      .users-item img {
+        margin-bottom: 12px;
+      }
+      .users-item .user__position {
+        margin-bottom: 10px;
+      }
+      .users-item .user__email {
+        margin-bottom: 8px;
+      }
+      .users-item .user__name {
+        margin-bottom: 12px;
+      }
+    }
+    .wrap-btn .btn {
+      margin-left: 66px;
+      margin-top: 63px;
     }
   }
-  .wrap-btn .btn{
-        margin-left: 66px;
-    margin-top: 63px;
-  }
-}
 }
 </style>

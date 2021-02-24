@@ -1,8 +1,8 @@
 <template>
-  <the-header />
-  <the-main />
-  <the-form />
-  <the-footer />
+  <TheHeader />
+  <TheMain />
+  <TheForm />
+  <TheFooter />
 </template>
 
 <script>

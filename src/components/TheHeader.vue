@@ -160,9 +160,10 @@ export default {
 
   a .btn {
     margin-bottom: 113px;
-    &:active {
-      background-color: #d24335;
-    }
+  }
+
+  .btn:active {
+    background-color: #d24335;
   }
 }
 
@@ -212,7 +213,6 @@ export default {
     }
   }
   .container-bg {
-
     .wrapper-content {
       padding-top: 120px;
       margin-left: 30px;
@@ -287,7 +287,6 @@ export default {
   }
 
   .container-bg {
-
     .btn {
       margin-right: 243px;
       margin-bottom: 73px;

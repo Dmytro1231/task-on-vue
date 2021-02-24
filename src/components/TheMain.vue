@@ -40,10 +40,22 @@
       <div class="wrapper-users">
         <div class="users-item" v-for="user in users.users" :key="user.id">
           <img :src="user.photo" width="70" height="70" />
-          <h3 class="user__name">{{ user.name }}</h3>
-          <p class="user__position">{{ user.position }}</p>
-          <span class="user__email">{{ user.email.slice(0, 30) }}</span>
-          <p class="user__phone">{{ user.phone }}</p>
+          <h3 class="user__name">
+            {{ user.name.slice(0, 30)
+            }}<small v-show="user.name.length > 20">...</small>
+          </h3>
+          <p class="user__position">
+            {{ user.position.slice(0, 30)
+            }}<small v-show="user.position.length > 20">...</small>
+          </p>
+          <span class="user__email"
+            >{{ user.email.slice(0, 30)
+            }}<small v-show="user.email.length > 20">...</small></span
+          >
+          <p class="user__phone">
+            {{ user.phone.slice(0, 30)
+            }}<small v-show="user.phone.length > 20">...</small>
+          </p>
         </div>
         <div
           class="load-users"
@@ -51,15 +63,29 @@
           :key="newUser.id"
         >
           <img :src="newUser.photo" />
-          <h3 class="user__name">{{ newUser.name }}</h3>
-          <p class="user__position">{{ newUser.position }}</p>
-          <p class="user__email">{{ newUser.email.slice(0, 30) }}</p>
-          <p class="user__phone">{{ newUser.phone }}</p>
+          <h3 class="user__name">
+            {{ newUser.name.slice(0, 30)
+            }}<small v-show="newUser.name.length > 20">...</small>
+          </h3>
+          <p class="user__position">
+            {{ newUser.position.slice(0, 30)
+            }}<small v-show="newUser.position.length > 20">...</small>
+          </p>
+          <p class="user__email">
+            {{ newUser.email.slice(0, 30)
+            }}<small v-show="newUser.email.length > 20">...</small>
+          </p>
+          <p class="user__phone">
+            {{ newUser.phone.slice(0, 30)
+            }}<small v-show="newUser.phone.length > 20">...</small>
+          </p>
         </div>
       </div>
 
       <div class="wrap-btn">
-        <button class="btn" v-on:click="getUsers">Show more</button>
+        <button class="btn" v-on:click="getUsers" v-show="counter < 10">
+          Show more
+        </button>
       </div>
     </div>
   </main>
@@ -199,10 +225,22 @@ $bg: #f9f9f3;
       }
     }
     .load-users {
-      margin-top: 60px;
-      margin-right: 145px;
-      h3 {
-        width: 200px;
+      margin-right: 110px;
+      width: 200px;
+      text-align: center;
+      img {
+        border-radius: 50%;
+        margin-bottom: 24px;
+        margin-top: 50px;
+      }
+      .user__name {
+        margin-bottom: 24px;
+      }
+      .user__position {
+        margin-bottom: 15px;
+      }
+      .user__email {
+        margin-bottom: 12px;
       }
     }
   }
@@ -212,6 +250,9 @@ $bg: #f9f9f3;
     .btn {
       margin-left: 43%;
       margin-top: 40px;
+      &:active {
+        background-color: #d24335;
+      }
     }
   }
   .btn-flat {

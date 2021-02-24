@@ -393,6 +393,9 @@ label {
 .form-btn {
   margin-bottom: 165px;
   margin-top: 25px;
+  &:active {
+    background-color: #d24335;
+  }
 }
 
 // modal overlay styling
@@ -445,6 +448,9 @@ label {
     padding-right: 20px;
     padding-top: 13px;
     padding-bottom: 13px;
+    &:active {
+      background-color: #d24335;
+    }
   }
 }
 
